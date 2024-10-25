@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-def simple_delete(a_dictionary, key=""):
+def simple_delete(a_dictionary, key="")i:
     if a_dictionary:
         try:
            del a_dictionary[key]
         except KeyError:
-            pass
+           pass
         return a_dictionary
