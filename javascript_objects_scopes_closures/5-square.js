@@ -1,15 +1,35 @@
 #!/usr/bin/node
 
-const Rectangle = require('./4-rectangle');
-
-class Square extends Rectangle {
-  constructor (size) {
-    if (size <= 0 || !Number.isInteger(size)) {
-      super(0, 0);
+class Rectangle {
+  constructor (w, h) {
+    if (w <= 0 || h <= 0 || !Number.isInteger(w) || !Number.isInteger(h)) {
+      this.width = undefined;
+      this.height = undefined;
     } else {
-      super(size, size);
+      this.width = w;
+      this.height = h;
+    }
+  }
+
+  print () {
+    if (this.width === undefined || this.height === undefined) return;
+    for (let i = 0; i < this.height; i++) {
+      console.log('X'.repeat(this.width));
+    }
+  }
+
+  rotate () {
+    if (this.width !== undefined && this.height !== undefined) {
+      [this.width, this.height] = [this.height, this.width];
+    }
+  }
+
+  double () {
+    if (this.width !== undefined && this.height !== undefined) {
+      this.width *= 2;
+      this.height *= 2;
     }
   }
 }
 
-module.exports = Square;
+module.exports = Rectangle;
